@@ -1,0 +1,26 @@
+:focus-visible {
+  outline: none;
+}
+
+.dropdown-divider {
+  border-top-color: #7c7c7c;
+}
+
+body[data-sidebar-size=sm] {
+  min-height: 0;
+}
+
+.logo-txt {
+  text-transform: none;
+}
+
+ul.pagar li {
+  list-style-type: "#";
+  list-style-position: outside;
+  padding-left: .5rem;
+  line-height: 1.2rem;
+}
+
+ul.pagar {
+  padding-left: 1rem;
+}
