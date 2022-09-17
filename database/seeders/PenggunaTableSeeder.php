@@ -17,6 +17,7 @@ class PenggunaTableSeeder extends Seeder
     Pengguna::create([
       'nama_pengguna' => 'admin',
       'kata_sandi' => bcrypt('kucoba'),
+      'kode_asisten' => 'aa',
       'nama_lengkap' => 'Administrator',
       'foto' => 'hd.png',
       'peran' => '0',
@@ -25,6 +26,7 @@ class PenggunaTableSeeder extends Seeder
     Pengguna::create([
       'nama_pengguna' => 'user',
       'kata_sandi' => bcrypt('admin'),
+      'kode_asisten' => 'am',
       'nama_lengkap' => 'Registered User',
       'foto' => 'hd.png',
     ]);
