@@ -59,20 +59,20 @@ Carbon::setLocale('id');
             <tbody>
               @foreach ($riwayats as $riwayat)
                 <tr>
-                  <td>{{ $riwayat->created_at }}</td>
+                  <td>{{ $riwayat->transaksi->created_at }}</td>
                   <td>{{ $riwayat->barang->nama_barang }}</td>
                   {{-- <td>Rp{{ number_format($riwayat->barang->harga_barang, 0, ',', '.') }}</td> --}}
-                  <td class="rupiah">{{ $riwayat->barang->harga_barang }}</td>
+                  <td class="rupiah">{{ $riwayat->harga }}</td>
                   <td>{{ $riwayat->jumlah }}</td>
                   {{-- <td>Rp{{ number_format($riwayat->barang->harga_barang * $riwayat->jumlah, 0, ',', '.') }}</td> --}}
-                  <td class="rupiah">{{ $riwayat->barang->harga_barang * $riwayat->jumlah }}</td>
+                  <td class="rupiah">{{ $riwayat->harga * $riwayat->jumlah }}</td>
                   {{-- <td>Rp{{ number_format($riwayat->total, 0, ',', '.') }}</td> --}}
-                  <td class="rupiah">{{ $riwayat->total }}</td>
+                  <td class="rupiah">{{ $riwayat->transaksi->total_harga }}</td>
                   {{-- <td>Rp{{ number_format($riwayat->bayar, 0, ',', '.') }}</td> --}}
-                  <td class="rupiah">{{ $riwayat->bayar }}</td>
+                  <td class="rupiah">{{ $riwayat->transaksi->total_bayar }}</td>
                   {{-- <td>Rp{{ number_format($riwayat->kembalian, 0, ',', '.') }}</td> --}}
-                  <td class="rupiah">{{ $riwayat->kembalian }}</td>
-                  <td>{{ $riwayat->pengguna->nama_lengkap }}</td>
+                  <td class="rupiah">{{ $riwayat->transaksi->kembalian }}</td>
+                  <td>{{ $riwayat->transaksi->pengguna->nama_lengkap }}</td>
                 </tr>
               @endforeach
             </tbody>

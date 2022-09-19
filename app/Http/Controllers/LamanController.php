@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Pengguna;
 use App\Models\Riwayat;
+use App\Models\Transaksi;
 use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,16 +104,22 @@ class LamanController extends Controller
     $barangs = $request->barangs;
     $qty = $request->qty;
 
+    $transaksi = Transaksi::create([
+      'total_harga' => $request->totalHarga,
+      'total_bayar' => $request->bayar,
+      'kembalian' => $request->kembalian,
+      'pengguna_id' => Auth::user()->id,
+    ]);
+
     foreach ($barangs as $i => $barang) {
       // $barang = Barang::find($barang);
       // $kuantitas = $qty[$i];
+      $harga = Barang::firstWhere('id', $barang)->harga_barang;
       Riwayat::create([
+        'transaksi_id' => $transaksi->id,
         'barang_id' => $barang,
         'jumlah' => $qty[$i],
-        'total' => $request->totalHarga,
-        'bayar' => $request->bayar,
-        'kembalian' => $request->kembalian,
-        'pengguna_id' => Auth::user()->id,
+        'harga' => $harga,
       ]);
     }
 
@@ -122,7 +129,8 @@ class LamanController extends Controller
   public function riwayat()
   {
     $riwayats = Riwayat::get();
-    return view('riwayat', ['riwayats' => $riwayats]);
+    $transaksis = Transaksi::get();
+    return view('riwayat', ['riwayats' => $riwayats, 'transaksis' => $transaksis]);
   }
 
   public function petunjuk()

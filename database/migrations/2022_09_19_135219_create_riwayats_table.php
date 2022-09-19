@@ -15,6 +15,7 @@ class CreateRiwayatsTable extends Migration
   {
     Schema::create('riwayats', function (Blueprint $table) {
       $table->id();
+      $table->foreignId('transaksi_id')->constrained('transaksis')->cascadeOnUpdate()->cascadeOnDelete();
       $table->foreignId('barang_id')->constrained('barangs')->cascadeOnUpdate()->cascadeOnDelete();
       $table->integer('jumlah');
       $table->unsignedBigInteger('harga');
