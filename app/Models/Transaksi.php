@@ -6,14 +6,14 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Riwayat extends Model
+class Transaksi extends Model
 {
   use HasFactory;
   protected $guarded = [];
 
-  public function barang()
+  public function pengguna()
   {
-    return $this->belongsTo('App\Models\Barang', 'barang_id');
+    return $this->belongsTo('App\Models\Pengguna', 'pengguna_id');
   }
 
   public function getCreatedAtAttribute($nilai)

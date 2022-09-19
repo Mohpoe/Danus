@@ -17,10 +17,10 @@ class CreateRiwayatsTable extends Migration
       $table->id();
       $table->foreignId('barang_id')->constrained('barangs')->cascadeOnUpdate()->cascadeOnDelete();
       $table->integer('jumlah');
-      $table->unsignedBigInteger('total');
-      $table->unsignedBigInteger('bayar');
-      $table->unsignedBigInteger('kembalian');
-      $table->foreignId('pengguna_id')->constrained('penggunas')->cascadeOnUpdate()->cascadeOnDelete();
+      $table->unsignedBigInteger('harga');
+      // $table->unsignedBigInteger('bayar');
+      // $table->unsignedBigInteger('kembalian');
+      // $table->foreignId('pengguna_id')->constrained('penggunas')->cascadeOnUpdate()->cascadeOnDelete();
       $table->timestamps();
     });
   }
