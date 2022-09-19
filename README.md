@@ -5,58 +5,122 @@
 ## Cara Install Laravel
 
 1. Download [Composer](https://getcomposer.org/download/) dan pilih **Composer-Setup.exe**.
-<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-download.png" width="100">
+
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-download.png">
+
 2. Install Composer hingga selesai. Untuk memastikan proses instalasi telah sukses, buka `cmd` lalu tuliskan perintah `compsoer`. Jika tampil seperti berikut ini, artinya proses instalasi telah selesai.
-<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-test.png" width="100">
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-test.png">
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Sampai di sini, kamu sudah bisa install Laravel di folder manapun yang kamu inginkan. Tetapi untuk proses instalasi Laravel pada repositori dari Github, ikuti langkah berikutnya.
 
-## Learning Laravel
+4. Silakan bergabung sebagai kontributor repositori ini dan *clone* ke penyimpanan lokal di PC kamu. (Atau tanpa *clone*, kamu juga bisa download repositori ini secara manual).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Buka folder di mana seluruh file dari repositori ini berada melalui *command prompt* lalu jalankan perintah `composer install` pada direktori tersebut.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+6. Selanjutnya, tunggu hingga proses pemasangan laravel selesai dan *project* tersebut siap kamu jalankan. Jika terdapat pesan *error* seperti gambar berikut, silakan klik pada **Generate app key**.
 
-## Laravel Sponsors
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/IJ3ai.png">
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Kumpulan `php artisan`
 
-### Premium Partners
+### Membuat project baru
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Pertama-tama buka *command prompt* dan arahkan ke folder di mana kamu ingin menempatkan folder *project* laravel kamu. Lalu tuliskan perintah berikut di `cmd`.
 
-## Contributing
+```
+composer create-project --prefer-dist laravel/laravel <nama_folder>
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Atau menggunakan perintah:
 
-## Code of Conduct
+```
+composer global require laravel/installer
+laravel new <nama_folder>
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Membuat Controller
 
-## Security Vulnerabilities
+```
+php artisan make:controller PageController
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Membuat & menjalankan Migration
 
-## License
+```
+php artisan make:migration create_penggunas_table --create=penggunas
+php artisan migrate
+php artisan migrate:reset
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
+php artisan migrate:rollback --step=1
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Membuat Model
+
+```
+php artisan make:model Pengguna
+php artisan make:model Mahasiswa -mc
+php artisan make:model Mahasiswa --migration --controller
+```
+
+### Membuat Middleware
+
+```
+php artisan make:middleware KhususAdminMiddleware
+```
+
+### Membuat Request Validated (format validasi dari form input)
+
+```
+php artisan make:request PendaftaranMahasiswa
+```
+
+### Membuat resource (public function CRUD di controller)
+
+```
+php artisan make:model Barang --mcr
+php artisan make:model Barang --migration --controller --resource
+```
+
+### Membuat Database Seeder
+
+```
+php artisan make:seeder PenggunaTableSeeder
+php artisan db:seed
+php artisan db:seed --class=PenggunaTableSeeder
+```
+
+### Membuat Factory
+
+```
+php artisan make:factory BarangFactory
+```
+
+### Tambah Class Mailable
+
+```
+php artisan make:mail TolakBerkas
+```
+
+```
+php artisan optimize:clear
+```
+
+### Tampilkan daftar vendor/packages
+
+```
+composer show -i
+```
+
+### Uninstall package
+
+```
+composer remove spatie/browsershot
+```
+
+### Install package dengan versi tertentu
+
+```
+composer require knplabs/knp-snappy:1.3.0
+```
