@@ -1,5 +1,6 @@
 <p align="center"><a href="#" target="_blank"><img src="https://raw.githubusercontent.com/Mohpoe/Danus/master/public/assets/images/logo.png" width="100"></a></p>
-<p align="center">LABKOMMAT</p>
+
+# LABKOMMAT
 
 ## Cara Install Laravel
 
