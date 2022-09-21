@@ -22,11 +22,11 @@
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/IJ3ai.png">
 
-## Kumpulan `php artisan`
+## Kumpulan perintah `php artisan`
 
 ### Membuat project baru
 
-Pertama-tama buka *command prompt* dan arahkan ke folder di mana kamu ingin menempatkan folder *project* laravel kamu. Lalu tuliskan perintah berikut di `cmd`.
+Pertama-tama buka *command prompt* dan arahkan ke folder di mana kamu ingin menempatkan folder *project* laravel kamu. Lalu tuliskan perintah berikut di `cmd`. **Pastikan kamu kenali fungsi dari perintah-perintah berikut sebelum menjalankannya!**
 
 ```
 composer create-project --prefer-dist laravel/laravel <nama_folder>
@@ -102,6 +102,8 @@ php artisan make:factory BarangFactory
 ```
 php artisan make:mail TolakBerkas
 ```
+
+### Membersihkan Cache
 
 ```
 php artisan optimize:clear

@@ -17,7 +17,7 @@ class LamanController extends Controller
   public function beranda()
   {
     $barangs = Barang::orderBy('nama_barang')->get();
-    return view('admin', ['barangs' => $barangs]);
+    return view('kasir', ['barangs' => $barangs]);
     // if (Auth::check()) {
     // } else {
     //   return view('beranda');
@@ -145,7 +145,8 @@ class LamanController extends Controller
 
   public function coba()
   {
-    $barang = Barang::factory()->make();
-    dump($barang->nama_barang);
+    // $barang = Barang::factory()->make();
+    // dump($barang->nama_barang);
+    return view('coba');
   }
 }

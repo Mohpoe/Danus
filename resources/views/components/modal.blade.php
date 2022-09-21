@@ -2,7 +2,7 @@
   $modalId      = atribut id dari modal
   $modalSize    = ukuran modal (optional)
   $modalTitle   = judul modal
-  $modalButton  = tombol tambahan --}}
+  $modalButton  = tombol tambahan (optional) --}}
 
 <div class="modal fade" id="{{ $modalId }}" data-bs-keyboard="true" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered {{ $modalSize ?? '' }}">

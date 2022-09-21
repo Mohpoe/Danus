@@ -56,6 +56,34 @@ function addTableRow(id, namaBarang, price) {
             value: '1',
           })
         )
+        // .append($('<div>')
+        //   .addClass('input-group bootstrap-touchspin bootstrap-touchspin-injected')
+        //   .append($('<input>')
+        //     .attr({
+        //       type: 'text',
+        //       name: 'qty[]',
+        //       class: 'form-control',
+        //       value: '1',
+        //     })
+        //   )
+        //   .append($('<span>')
+        //     .addClass('input-group-btn-vertical')
+        //     .append($('<button>')
+        //       .attr({
+        //         type: 'button',
+        //         class: 'btn btn-primary bootstrap-touchspin-up',
+        //       })
+        //       .text('+')
+        //     )
+        //     .append($('<button>')
+        //       .attr({
+        //         type: 'button',
+        //         class: 'btn btn-primary bootstrap-touchspin-down',
+        //       })
+        //       .text('-')
+        //     )
+        //   )
+        // )
       )
       .append($('<td>')
         .addClass('align-middle')

@@ -7,6 +7,7 @@ Carbon::setLocale('id');
 @section('title', 'Kasir')
 
 @section('css')
+  {{-- <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}"> --}}
   <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 @endsection
@@ -25,8 +26,8 @@ Carbon::setLocale('id');
               <i class="bx bx-dots-horizontal-rounded"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="#">Atur Barang</a>
-              <a class="dropdown-item" href="#">Lihat Riwayat</a>
+              <a class="dropdown-item" href="{{ route('barang.index') }}">Atur Barang</a>
+              <a class="dropdown-item" href="{{ route('riwayat') }}">Lihat Riwayat</a>
             </div>
           </div>
 
@@ -55,7 +56,7 @@ Carbon::setLocale('id');
                     {{-- <td>Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</td> --}}
                     <td>{{ $barang->harga_barang }}</td>
                     <td>
-                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target=".orderdetailsModal">
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalBarang{{ $barang->id }}">
                         Detail
                       </button>
                       <button type="button" class="btn btn-success btn-sm ms-1" onclick="addTableRow('{{ $barang->id }}', '{{ $barang->nama_barang }}', '{{ $barang->harga_barang }}')">
@@ -63,6 +64,25 @@ Carbon::setLocale('id');
                       </button>
                     </td>
                   </tr>
+                  @component('components.modal', ['modalId' => "modalBarang$barang->id", 'modalTitle' => "Detail: $barang->nama_barang"])
+                    <div class="px-2">
+                      <div class="row">
+                        <img src="{{ asset('images/barang/' . $barang->gambar_barang) }}" alt="{{ $barang->nama_barang }}" class="w-100">
+                      </div>
+                      <div class="row">
+                        <div class="border-bottom col p-1">Nama Barang</div>
+                        <div class="border-bottom col p-1">{{ $barang->nama_barang }}</div>
+                      </div>
+                      <div class="row">
+                        <div class="border-bottom col p-1">Harga Barang</div>
+                        <div class="border-bottom col p-1">Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</div>
+                      </div>
+                      <div class="row">
+                        <div class="border-bottom col p-1">Deskripsi Barang</div>
+                        <div class="border-bottom col p-1">{{ $barang->deskripsi_barang }}</div>
+                      </div>
+                    </div>
+                  @endcomponent
                 @endforeach
               </tbody>
             </table>
@@ -120,6 +140,14 @@ Carbon::setLocale('id');
                           <a href="javascript:void(0);" class="action-icon text-danger delButton"> <i class="mdi mdi-trash-can font-size-18"></i></a>
                         </td>
                       </tr> --}}
+
+                      {{-- <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                        <input type="text" value="02" name="demo_vertical" class="form-control">
+                        <span class="input-group-btn-vertical">
+                          <button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+                          <button class="btn btn-primary bootstrap-touchspin-down" type="button">-</button>
+                        </span>
+                      </div> --}}
                     </tbody>
                     <tfoot class="table-light">
                       <tr class="text-muted">
@@ -142,14 +170,20 @@ Carbon::setLocale('id');
 @endsection
 
 @section('script')
+  {{-- <script src="{{ asset('assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.js') }}"></script> --}}
   <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
   <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ asset('assets/js/app.min.js') }}?ver={{ filemtime(public_path('assets/js/app.min.js')) }}"></script>
   <script src="{{ asset('js/script.js') }}?ver={{ filemtime(public_path('js/script.js')) }}"></script>
-  <script src="{{ asset('js/admin.js') }}?ver={{ filemtime(public_path('js/admin.js')) }}"></script>
+  <script src="{{ asset('js/kasir.js') }}?ver={{ filemtime(public_path('js/kasir.js')) }}"></script>
 @endsection
 
 @section('script-bottom')
+  <script>
+    $("input[name='qty[]']").TouchSpin({
+      verticalbuttons: !0
+    });
+  </script>
   @if (session()->has('pesanSukses'))
     <script>
       Toast.fire({
