@@ -42,11 +42,11 @@
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/github-clone-repo.png">
 
-4. Tunggu hingga proses *cloning* selesai dan seluruh file dari repository ini akan tersimpan di direktori lokal. Selanjutnya buka direktori tersebut melalui **cmd** atau **Git bash** lalu tuliskan perintah `composer install`, dan proses instalasi framework Laravel akan dilakukan, tunggu hingga proses tersebut selesai.
+5. Tunggu hingga proses *cloning* selesai dan seluruh file dari repository ini akan tersimpan di direktori lokal. Selanjutnya buka direktori tersebut melalui **cmd** atau **Git bash** lalu tuliskan perintah `composer install`, dan proses instalasi framework Laravel akan dilakukan, tunggu hingga proses tersebut selesai.
 
-5. Setelah itu jalankan perintah `php artisan key:generate` dan aplikasi Danus siap dijalankan menggunakan perintah `php artisan serve` melalui **cmd** atau **Git bash**.
+6. Setelah itu jalankan perintah `php artisan key:generate` dan aplikasi Danus siap dijalankan menggunakan perintah `php artisan serve` melalui **cmd** atau **Git bash**.
 
-6. Jika terdapat pesan *error* seperti gambar berikut, silakan klik pada **Generate app key**. (Hal ini terjadi apabila perintah `php artisan key:generate` tidak dijalankan).
+7. Jika terdapat pesan *error* seperti gambar berikut, silakan klik pada **Generate app key**. (Hal ini terjadi apabila perintah `php artisan key:generate` tidak dijalankan).
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/IJ3ai.png">
 
