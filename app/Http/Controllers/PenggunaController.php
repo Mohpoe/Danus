@@ -14,7 +14,8 @@ class PenggunaController extends Controller
 
   public function penggunaIndex()
   {
-    return view('pengguna');
+    $penggunas = Pengguna::get();
+    return view('pengguna', ['penggunas' => $penggunas]);
   }
 
   public function penggunaStore(Request $request)

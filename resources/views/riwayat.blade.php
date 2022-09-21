@@ -11,7 +11,7 @@ Carbon::setLocale('id');
 @endsection
 
 @section('content')
-  @component('components.breadcrumb', ['lk_1' => '/', 'lt_1' => 'Beranda', 'title' => 'Riwayat'])
+  @component('components.breadcrumb', ['lk_1' => '/', 'lt_1' => 'Danus', 'title' => 'Riwayat'])
   @endcomponent
 
   <div class="row">

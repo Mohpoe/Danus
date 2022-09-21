@@ -9,7 +9,7 @@
       <ul class="metismenu list-unstyled" id="side-menu">
         <li class="menu-title">Menu</li>
 
-        <li>
+        {{-- <li>
           <a href="{{ route('beranda') }}">
             @guest
               <i data-feather="home"></i>
@@ -19,10 +19,24 @@
               <span>Kasir</span>
             @endguest
           </a>
-        </li>
+        </li> --}}
 
         @auth
           <li>
+            <a href="javascript: void(0);" class="has-arrow">
+              <i data-feather="shopping-cart"></i>
+              <span>Danus</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="{{ route('beranda') }}">Kasir</a></li>
+              @if (Auth::user()->peran == '0')
+                <li><a href="{{ route('barang.index') }}">Barang</a></li>
+              @endif
+              <li><a href="{{ route('riwayat') }}">Riwayat</a></li>
+            </ul>
+          </li>
+
+          {{-- <li>
             <a href="{{ route('riwayat') }}">
               <i data-feather="archive"></i>
               <span>Riwayat</span>
@@ -35,18 +49,20 @@
                 <span>Barang</span>
               </a>
             </li>
-            <li>
-              <a href="{{ route('pengguna.index') }}">
-                <i data-feather="users"></i>
-                <span>Pengguna</span>
-              </a>
-            </li>
-          @endif
+          @endif --}}
+
           <li>
-            <a href="{{ route('profil.index') }}">
-              <i data-feather="user"></i>
-              <span>Profil</span>
+            <a href="javascript: void(0);" class="has-arrow">
+              <i data-feather="user-check"></i>
+              <span>Pengguna</span>
             </a>
+            <ul class="sub-menu" aria-expanded="false">
+              @if (Auth::user()->peran == '0')
+                <li><a href="{{ route('pengguna.index') }}">Daftar Pengguna</a></li>
+              @endif
+              <li><a href="{{ route('profil.index') }}">Profil</a></li>
+              <li><a href="{{ route('keluar') }}">Keluar</a></li>
+            </ul>
           </li>
 
           <li class="menu-title">Lainnya</li>
@@ -55,12 +71,6 @@
             <a href="{{ route('petunjuk') }}">
               <i data-feather="help-circle"></i>
               <span>Petunjuk</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ route('keluar') }}">
-              <i data-feather="log-out"></i>
-              <span>Keluar</span>
             </a>
           </li>
         @else

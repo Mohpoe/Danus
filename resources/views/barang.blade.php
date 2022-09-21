@@ -7,14 +7,13 @@
 @endsection
 
 @section('content')
-  @component('components.breadcrumb', ['lk_1' => '/', 'lt_1' => 'Beranda', 'title' => 'Barang'])
+  @component('components.breadcrumb', ['lk_1' => '/', 'lt_1' => 'Danus', 'title' => 'Barang'])
   @endcomponent
 
   <div class="row">
     <div class="col">
       <div class="card">
         <div class="card-header">
-
           <div class="dropdown float-end">
             <a class="text-muted dropdown-toggle font-size-16 lh-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
               <i class="bx bx-dots-horizontal-rounded"></i>
