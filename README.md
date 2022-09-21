@@ -1,6 +1,18 @@
 <p align="center"><a href="#" target="_blank"><img src="https://raw.githubusercontent.com/Mohpoe/Danus/master/public/assets/images/logo.png" width="100"></a></p>
 
-# LABKOMMAT
+```
+                  ___                     ___         ___         ___         ___         ___               
+                 /  /\       _____       /__/|       /  /\       /__/\       /__/\       /  /\        ___   
+                /  /::\     /  /::\     |  |:|      /  /::\     |  |::\     |  |::\     /  /::\      /  /\  
+  ___     ___  /  /:/\:\   /  /:/\:\    |  |:|     /  /:/\:\    |  |:|:\    |  |:|:\   /  /:/\:\    /  /:/  
+ /__/\   /  /\/  /:/~/::\ /  /:/~/::\ __|  |:|    /  /:/  \:\ __|__|:|\:\ __|__|:|\:\ /  /:/~/::\  /  /:/   
+ \  \:\ /  /:/__/:/ /:/\:/__/:/ /:/\:/__/\_|:|___/__/:/ \__\:/__/::::| \:/__/::::| \:/__/:/ /:/\:\/  /::\   
+  \  \:\  /:/\  \:\/:/__\\  \:\/:/~/:\  \:\/:::::\  \:\ /  /:\  \:\~~\__\\  \:\~~\__\\  \:\/:/__\/__/:/\:\  
+   \  \:\/:/  \  \::/     \  \::/ /:/ \  \::/~~~~ \  \:\  /:/ \  \:\      \  \:\      \  \::/    \__\/  \:\ 
+    \  \::/    \  \:\      \  \:\/:/   \  \:\      \  \:\/:/   \  \:\      \  \:\      \  \:\         \  \:\
+     \__\/      \  \:\      \  \::/     \  \:\      \  \::/     \  \:\      \  \:\      \  \:\         \__\/
+                 \__\/       \__\/       \__\/       \__\/       \__\/       \__\/       \__\/              
+```
 
 ## Cara Install Laravel
 
@@ -8,17 +20,33 @@
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-download.png">
 
-2. Install Composer hingga selesai. Untuk memastikan proses instalasi telah sukses, buka `cmd` lalu tuliskan perintah `compsoer`. Jika tampil seperti berikut ini, artinya proses instalasi telah selesai.
+2. Install Composer hingga selesai. Untuk memastikan proses instalasi telah sukses, buka **cmd** lalu tuliskan perintah `composer`. Jika tampil seperti berikut ini, artinya proses instalasi telah selesai.
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/composer-test.png">
 
 3. Sampai di sini, kamu sudah bisa install Laravel di folder manapun yang kamu inginkan. Tetapi untuk proses instalasi Laravel pada repositori dari Github, ikuti langkah berikutnya.
 
-4. Silakan bergabung sebagai kontributor repositori ini dan *clone* ke penyimpanan lokal di PC kamu. (Atau tanpa *clone*, kamu juga bisa download repositori ini secara manual).
+## Menghubungkan GitHub ke VSCode & Repository Danus
 
-5. Buka folder di mana seluruh file dari repositori ini berada melalui *command prompt* lalu jalankan perintah `composer install` pada direktori tersebut.
+1. Download dan install VSCode melalu [website VSCode](https://code.visualstudio.com/download). Untuk langkah-langkah proses instalasi, silakan cari referensi dari situs lain atau [di sini](https://www.sekayuweb.com/2021/07/cara-install-visual-studio-code-di-windows.html).
 
-6. Selanjutnya, tunggu hingga proses pemasangan laravel selesai dan *project* tersebut siap kamu jalankan. Jika terdapat pesan *error* seperti gambar berikut, silakan klik pada **Generate app key**.
+2. Setelah itu, buka aplikasi VSCode dan pilih menu **Account** yang ada di pojok kiri-bawah, dan hubungkan akun GitHub kamu. Pastikan akun GitHub tersebut sudah bergabung menjadi kontributor pada repository Danus ini untuk bisa melanjutkan ke langkah berikutnya.
+
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/github-account.png">
+
+3. Setelah terhubung, buka menu **Source Control**, selanjutnya kamu akan diarahkan untuk meng-install aplikasi **Git** jika belum. Silakan install aplikasi **Git**. Untuk langkah-langkah proses instalasi **Git**, silakan cari referensi dari situs lain atau [di sini](https://www.niagahoster.co.id/blog/git-tutorial-dasar/).
+
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/github-source-control.png">
+
+4. Setelah **Git** ter-install, maka di menu *Source Control* pilih *Clone Repository*, pilih *Clone from GitHub* dan pilih *repository* yang ingin kamu *clone*, dalam hal ini repository **Danus**.
+
+<img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/github-clone-repo.png">
+
+4. Tunggu hingga proses *cloning* selesai dan seluruh file dari repository ini akan tersimpan di direktori lokal. Selanjutnya buka direktori tersebut melalui **cmd** atau **Git bash** lalu tuliskan perintah `composer install`, dan proses instalasi framework Laravel akan dilakukan, tunggu hingga proses tersebut selesai.
+
+5. Setelah itu jalankan perintah `php artisan key:generate` dan aplikasi Danus siap dijalankan menggunakan perintah `php artisan serve` melalui **cmd** atau **Git bash**.
+
+6. Jika terdapat pesan *error* seperti gambar berikut, silakan klik pada **Generate app key**. (Hal ini terjadi apabila perintah `php artisan key:generate` tidak dijalankan).
 
 <img src="https://raw.githubusercontent.com/Mohpoe/dokumentasi/master/danus/IJ3ai.png">
 
