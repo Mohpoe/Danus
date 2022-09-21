@@ -130,7 +130,7 @@
                       Edit
                     </button>
                   </td>
-                  @component('components.modal-form', ['modalId' => "modalEditBarang$barang->id", 'modalSize' => 'modal-lg', 'formAction' => route('barang.update', ['barang' => $barang->id]), 'formId' => "formEditBarang$barang->id", 'modalTitle' => 'Edit Barang', 'formSubmit' => false])
+                  @component('components.modal-form', ['modalId' => "modalEditBarang$barang->id", 'modalSize' => 'modal-lg', 'formAction' => route('barang.update', ['barang' => $barang->id]), 'formId' => "formEditBarang$barang->id", 'formFile' => true, 'modalTitle' => 'Edit Barang', 'formSubmit' => false])
                     @method('PATCH')
                     <input type="hidden" name="id_barang" value="{{ $barang->id }}">
                     <input type="hidden" name="pageNumber" value="{{ $loop->iteration }}">

@@ -30,7 +30,6 @@ $(document).ready(function () {
     "drawCallback": function () {
       $('.dataTables_paginate > .pagination').addClass('pagination-sm');
     }
-    // });
   });
 
   $('#tabel_riwayat').DataTable().buttons().container().find('button').prependTo('.dropdown-menu');
