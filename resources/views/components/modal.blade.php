@@ -16,7 +16,7 @@
       </div>
       <div class="modal-footer">
         {{ $modalButton ?? '' }}
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
       </div>
     </div>
   </div>
