@@ -128,7 +128,7 @@
               @foreach ($penggunas as $pengguna)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td><img src="/images/pengguna/{{ $pengguna->foto }}" alt="{{ $pengguna->nama_lengkap }}" class="avatar-md"></td>
+                  <td><img src="{{ $pengguna->foto }}" alt="{{ $pengguna->nama_lengkap }}" class="avatar-md"></td>
                   <td><code class="fs-5">{{ $pengguna->nama_pengguna }}</code></td>
                   <td>{{ strtoupper($pengguna->kode_asisten) }}</td>
                   <td>{{ $pengguna->nama_lengkap }}</td>

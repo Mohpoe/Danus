@@ -96,13 +96,13 @@
                   <div id="reviewcarouselIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators auth-carousel carousel-indicators-rounded justify-content-center mb-0">
                       <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                        <img src="{{ asset('images/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
+                        <img src="{{ asset('images/pengguna/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
                       </button>
                       <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                        <img src="{{ asset('images/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
+                        <img src="{{ asset('images/pengguna/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
                       </button>
                       <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                        <img src="{{ asset('images/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
+                        <img src="{{ asset('images/pengguna/ava.webp') }}" class="avatar-md img-fluid rounded-circle d-block" alt="">
                       </button>
                     </div>
                     <!-- end carouselIndicators -->
