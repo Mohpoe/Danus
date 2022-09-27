@@ -66,8 +66,8 @@ Carbon::setLocale('id');
                   </tr>
                   @component('components.modal', ['modalId' => "modalBarang$barang->id", 'modalTitle' => "Detail: $barang->nama_barang"])
                     <div class="px-2">
-                      <div class="row">
-                        <img src="{{ asset('images/barang/' . $barang->gambar_barang) }}" alt="{{ $barang->nama_barang }}" class="w-100">
+                      <div class="row my-4">
+                        <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="w-100">
                       </div>
                       <div class="row">
                         <div class="border-bottom col p-1">Nama Barang</div>
