@@ -20,6 +20,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">Tambah Barang</a>
+              <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">Impor Data Barang</a>
+              <a class="dropdown-item" href="{{ route('unduh', ['file' => $format_impor, 'name' => 'Format Impor Data Barang.xlsx']) }}">Unduh Format Impor</a>
             </div>
           </div>
 
@@ -121,7 +123,7 @@
             <tbody>
               @foreach ($barangs as $barang)
                 <tr>
-                  <td><img src="/images/barang/{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="avatar-md"></td>
+                  <td><img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="avatar-md"></td>
                   <td>{{ $barang->nama_barang }}</td>
                   <td>{{ $barang->harga_barang }}</td>
                   {{-- <td>{{ $barang->deskripsi_barang }}</td> --}}
@@ -184,14 +186,13 @@
                     {{-- GAMBAR BARANG --}}
                     <div class="mb-3">
                       <label class="form-label">Gambar Barang</label>
-                      @php($value = old('id_barang') == $barang->id ? old('gambar_barang') : $barang->gambar_barang)
                       @php($invalid = old('id_barang') == $barang->id && $errors->has('gambar_barang') ? 'is-invalid' : '')
                       <div class="row">
                         <div class="col-sm col-xs-12 mb-1">
                           <input class="form-control {{ $invalid }}" name="gambar_barang" type="file" accept="image/png, image/gif, image/jpeg">
                         </div>
                         <div class="col-sm-auto col-xs-12 mb-1">
-                          <button type="button" class="btn btn-danger {{ $barang->gambar_barang == '' ? 'disabled' : '' }}" onclick="document.getElementById('hapusFoto').submit()">Hapus Foto</button>
+                          <button type="button" class="btn btn-danger {{ $barang->getRawOriginal('gambar_barang') == '' ? 'disabled' : '' }}" onclick="document.getElementById('hapusGambarBarang').submit()">Hapus Foto</button>
                         </div>
                       </div>
                       @if (old('id_barang') == $barang->id)
@@ -207,6 +208,14 @@
                       <button type="button" class="btn btn-primary" id="buttonEditBarang{{ $barang->id }}">Simpan</button>
                     @endslot
                   @endcomponent
+
+                  <div class="d-none">
+                    <form action="{{ route('barang.update', ['barang' => $barang->id]) }}" method="post" class="d-none" id="hapusGambarBarang">
+                      @csrf
+                      @method('PATCH')
+                      <input type="hidden" name="hapus_gambar_barang" value="1">
+                    </form>
+                  </div>
                 </tr>
                 <script>
                   document.getElementById("buttonEditBarang{{ $barang->id }}").addEventListener("click", function() {
