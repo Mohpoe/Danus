@@ -163,3 +163,9 @@ composer remove spatie/browsershot
 ```
 composer require knplabs/knp-snappy:1.3.0
 ```
+
+## Package List
+
+Berikut ini daftar *package* yang digunakan dalam proyek ini.
+
+1. maatwebsite/excel
