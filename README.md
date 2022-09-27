@@ -11,6 +11,8 @@
 
 ## Cara Install Composer
 
+Sebelum meng-install aplikasi **Composer**, pastikan kamu telah meng-install [XAMPP](https://www.apachefriends.org/download.html) ataupun software web server lokal lainnya.
+
 1. Download [Composer](https://getcomposer.org/download/) dan pilih **Composer-Setup.exe**.
 
 <p align="center">
