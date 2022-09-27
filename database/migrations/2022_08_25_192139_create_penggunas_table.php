@@ -19,7 +19,7 @@ class CreatePenggunasTable extends Migration
       $table->string('kata_sandi');
       $table->char('kode_asisten')->unique();
       $table->char('nama_lengkap');
-      $table->char('foto');
+      $table->string('foto')->nullable();
       $table->enum('peran', ['0', '1'])->default('1');
       $table->timestamps();
     });
