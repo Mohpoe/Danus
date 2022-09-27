@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::middleware(['guest'])->group(function () {
   Route::get('/masuk', [LamanController::class, 'masukTampil'])->name('masuk.tampil');
   Route::post('/masuk', [LamanController::class, 'masukProses'])->name('masuk.proses');
@@ -50,8 +49,8 @@ Route::middleware(['login'])->group(function () {
 
   Route::get('/riwayat', [LamanController::class, 'riwayat'])->name('riwayat');
   Route::get('/petunjuk', [LamanController::class, 'petunjuk'])->name('petunjuk');
+  Route::get('/unduh/{file}/{name?}', [LamanController::class, 'unduh'])->name('unduh');
   Route::post('/keluar', [LamanController::class, 'keluar'])->name('keluar');
 });
-
 
 Route::get('/coba', [LamanController::class, 'coba']);

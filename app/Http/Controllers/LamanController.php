@@ -9,6 +9,7 @@ use App\Models\Transaksi;
 use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -124,6 +125,14 @@ class LamanController extends Controller
     }
 
     return redirect()->route('beranda')->with('pesanSukses', 'Transaksi berhasil!');
+  }
+
+  public function unduh($file, $name = '')
+  {
+    $fileOrigin = Crypt::decryptString($file);
+    $filePath = public_path("$fileOrigin");
+    $fileName = $name ?? str_replace('_', ' ', $fileOrigin);
+    return response()->download($filePath, $fileName);
   }
 
   public function riwayat()
