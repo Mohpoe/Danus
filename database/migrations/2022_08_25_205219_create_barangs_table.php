@@ -18,7 +18,7 @@ class CreateBarangsTable extends Migration
       $table->char('nama_barang');
       $table->unsignedBigInteger('harga_barang');
       $table->text('deskripsi_barang');
-      $table->string('gambar_barang');
+      $table->string('gambar_barang')->nullable();
       $table->timestamps();
     });
   }
