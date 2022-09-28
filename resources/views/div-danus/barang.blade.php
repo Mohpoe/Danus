@@ -20,7 +20,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">Tambah Barang</a>
-              <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">Impor Data Barang</a>
+              <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalImporBarang">Impor Data Barang</a>
               <a class="dropdown-item" href="{{ route('unduh', ['file' => $format_impor, 'name' => 'Format Impor Data Barang.xlsx']) }}">Unduh Format Impor</a>
             </div>
           </div>
@@ -32,6 +32,7 @@
           </div>
         </div>
 
+        {{-- MODAL TAMBAH BARANG --}}
         @component('components.modal-form', ['modalId' => 'modalTambahBarang', 'modalSize' => 'modal-lg', 'formAction' => route('barang.store'), 'formId' => 'formTambahBarang', 'formFile' => true, 'modalTitle' => 'Tambah Barang', 'formSubmit' => false])
           {{-- NAMA BARANG --}}
           <div class="mb-3">
@@ -90,24 +91,28 @@
           @endslot
         @endcomponent
 
-        <script>
-          document.getElementById("buttonTambahBarang").addEventListener("click", function() {
-            Swal.fire({
-              title: "Yakin ingin mengirim data?",
-              text: "Pastikan data yang dikirim sudah benar!",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#1c84ee",
-              cancelButtonColor: "#fd625e",
-              confirmButtonText: "Ya, kirim!",
-              cancelButtonText: "Batal",
-            }).then(function(result) {
-              if (result.value) {
-                document.getElementById("formTambahBarang").submit();
-              }
-            });
-          });
-        </script>
+        {{-- MODAL IMPOR DATA BARANG --}}
+        @component('components.modal-form', ['modalId' => 'modalImporBarang', 'modalSize' => 'modal-lg', 'formAction' => route('barang.impor'), 'formId' => 'formImporBarang', 'formFile' => true, 'modalTitle' => 'Unggah Data Barang', 'formSubmit' => false])
+          {{-- FILE EXCEL DATA BARANG --}}
+          <div class="mb-3">
+            <label class="form-label">Impor Data Barang</label>
+            @php($invalid = $errors->has('impor_barang') ? 'is-invalid' : '')
+            <div class="row">
+              <div class="col-sm col-xs-12 mb-1">
+                <input class="form-control {{ $invalid }}" name="impor_barang" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              </div>
+            </div>
+            @error('impor_barang')
+              <div class="small text-danger">
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          @slot('formButton')
+            <button type="button" class="btn btn-primary" id="buttonTambahBarang">Simpan</button>
+          @endslot
+        @endcomponent
 
         <div class="card-body">
           <table class="table-nowrap w-100 table" id="tabel_barang">
@@ -123,7 +128,11 @@
             <tbody>
               @foreach ($barangs as $barang)
                 <tr>
-                  <td><img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="avatar-md"></td>
+                  <td>
+                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalGambarBarang{{ $barang->id }}">
+                      <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="avatar-md">
+                    </a>
+                  </td>
                   <td>{{ $barang->nama_barang }}</td>
                   <td>{{ $barang->harga_barang }}</td>
                   {{-- <td>{{ $barang->deskripsi_barang }}</td> --}}
@@ -131,7 +140,12 @@
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditBarang{{ $barang->id }}">
                       Edit
                     </button>
+                    <button type="button" class="btn btn-danger btn-sm">
+                      Hapus
+                    </button>
                   </td>
+
+                  {{-- MODAL EDIT BARANG --}}
                   @component('components.modal-form', ['modalId' => "modalEditBarang$barang->id", 'modalSize' => 'modal-lg', 'formAction' => route('barang.update', ['barang' => $barang->id]), 'formId' => "formEditBarang$barang->id", 'formFile' => true, 'modalTitle' => 'Edit Barang', 'formSubmit' => false])
                     @method('PATCH')
                     <input type="hidden" name="id_barang" value="{{ $barang->id }}">
@@ -207,6 +221,11 @@
                     @slot('formButton')
                       <button type="button" class="btn btn-primary" id="buttonEditBarang{{ $barang->id }}">Simpan</button>
                     @endslot
+                  @endcomponent
+
+                  {{-- MODAL GAMBAR BARANG --}}
+                  @component('components.modal', ['modalId' => "modalGambarBarang$barang->id", 'modalTitle' => "Gambar: $barang->nama_barang"])
+                    <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="w-100">
                   @endcomponent
 
                   <div class="d-none">
@@ -297,6 +316,23 @@
   @endif
 
   <script>
+    document.getElementById("buttonTambahBarang").addEventListener("click", function() {
+      Swal.fire({
+        title: "Yakin ingin mengirim data?",
+        text: "Pastikan data yang dikirim sudah benar!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#1c84ee",
+        cancelButtonColor: "#fd625e",
+        confirmButtonText: "Ya, kirim!",
+        cancelButtonText: "Batal",
+      }).then(function(result) {
+        if (result.value) {
+          document.getElementById("formTambahBarang").submit();
+        }
+      });
+    });
+
     $(document).ready(function() {
       $('.btn-kirim').on('click', function() {
         var form = $(this).closest('.modal-footer').closest('.modal-content').find('.modal-body');

@@ -56,7 +56,7 @@ Carbon::setLocale('id');
                     {{-- <td>Rp{{ number_format($barang->harga_barang, 0, ',', '.') }}</td> --}}
                     <td>{{ $barang->harga_barang }}</td>
                     <td>
-                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalBarang{{ $barang->id }}">
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetailBarang{{ $barang->id }}">
                         Detail
                       </button>
                       <button type="button" class="btn btn-success btn-sm ms-1" onclick="addTableRow('{{ $barang->id }}', '{{ $barang->nama_barang }}', '{{ $barang->harga_barang }}')">
@@ -64,7 +64,9 @@ Carbon::setLocale('id');
                       </button>
                     </td>
                   </tr>
-                  @component('components.modal', ['modalId' => "modalBarang$barang->id", 'modalTitle' => "Detail: $barang->nama_barang"])
+
+                  {{-- MODAL DETAIL BARANG --}}
+                  @component('components.modal', ['modalId' => "modalDetailBarang$barang->id", 'modalTitle' => "Detail: $barang->nama_barang"])
                     <div class="px-2">
                       <div class="row my-4">
                         <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="w-100">
