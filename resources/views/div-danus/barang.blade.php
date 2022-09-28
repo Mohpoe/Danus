@@ -2,6 +2,7 @@
 @section('title', 'Barang')
 
 @section('css')
+  <link rel="stylesheet" href="{{ asset('assets/libs/glightbox/glightbox.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 @endsection
@@ -129,9 +130,7 @@
               @foreach ($barangs as $barang)
                 <tr>
                   <td>
-                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalGambarBarang{{ $barang->id }}">
-                      <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="avatar-md">
-                    </a>
+                    <img src="{{ $barang->gambar_barang }}" class="avatar-md">
                   </td>
                   <td>{{ $barang->nama_barang }}</td>
                   <td>{{ $barang->harga_barang }}</td>
@@ -223,11 +222,6 @@
                     @endslot
                   @endcomponent
 
-                  {{-- MODAL GAMBAR BARANG --}}
-                  @component('components.modal', ['modalId' => "modalGambarBarang$barang->id", 'modalTitle' => "Gambar: $barang->nama_barang"])
-                    <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="w-100">
-                  @endcomponent
-
                   <div class="d-none">
                     <form action="{{ route('barang.update', ['barang' => $barang->id]) }}" method="post" class="d-none" id="hapusGambarBarang">
                       @csrf
@@ -276,6 +270,7 @@
 @endsection
 
 @section('script')
+  <script src="{{ asset('assets/libs/glightbox/glightbox.min.js') }}"></script>
   <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
   <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ asset('assets/js/app.min.js') }}?ver={{ filemtime(public_path('assets/js/app.min.js')) }}"></script>
@@ -331,6 +326,11 @@
           document.getElementById("formTambahBarang").submit();
         }
       });
+    });
+
+    var lightbox = GLightbox({
+      selector: '.avatar-md',
+      title: false,
     });
 
     $(document).ready(function() {

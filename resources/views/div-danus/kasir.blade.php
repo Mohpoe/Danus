@@ -8,6 +8,7 @@ Carbon::setLocale('id');
 
 @section('css')
   {{-- <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/libs/glightbox/glightbox.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 @endsection
@@ -69,7 +70,7 @@ Carbon::setLocale('id');
                   @component('components.modal', ['modalId' => "modalDetailBarang$barang->id", 'modalTitle' => "Detail: $barang->nama_barang"])
                     <div class="px-2">
                       <div class="row my-4">
-                        <img src="{{ $barang->gambar_barang }}" alt="{{ $barang->nama_barang }}" class="w-100">
+                        <img src="{{ $barang->gambar_barang }}" class="w-100 image-popup">
                       </div>
                       <div class="row">
                         <div class="border-bottom col p-1">Nama Barang</div>
@@ -176,16 +177,19 @@ Carbon::setLocale('id');
   <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
   <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ asset('assets/js/app.min.js') }}?ver={{ filemtime(public_path('assets/js/app.min.js')) }}"></script>
+  <script src="{{ asset('assets/libs/glightbox/glightbox.min.js') }}"></script>
   <script src="{{ asset('js/script.js') }}?ver={{ filemtime(public_path('js/script.js')) }}"></script>
   <script src="{{ asset('js/kasir.js') }}?ver={{ filemtime(public_path('js/kasir.js')) }}"></script>
 @endsection
 
 @section('script-bottom')
   <script>
-    $("input[name='qty[]']").TouchSpin({
-      verticalbuttons: !0
+    var lightbox = GLightbox({
+      selector: '.image-popup',
+      title: false,
     });
   </script>
+
   @if (session()->has('pesanSukses'))
     <script>
       Toast.fire({
