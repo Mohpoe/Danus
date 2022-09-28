@@ -18,7 +18,7 @@ class LamanController extends Controller
   public function beranda()
   {
     $barangs = Barang::orderBy('nama_barang')->get();
-    return view('kasir', ['barangs' => $barangs]);
+    return view('div-danus.kasir', ['barangs' => $barangs]);
     // if (Auth::check()) {
     // } else {
     //   return view('beranda');
@@ -87,7 +87,7 @@ class LamanController extends Controller
       $totalHarga += $hargas[] = Barang::find($barangs[$i])->harga_barang * $qty[$i];
     }
 
-    return view('checkout', ['barangs' => $barangs, 'qty' => $qty, 'hargas' => $hargas, 'totalHarga' => $totalHarga]);
+    return view('div-danus.checkout', ['barangs' => $barangs, 'qty' => $qty, 'hargas' => $hargas, 'totalHarga' => $totalHarga]);
   }
 
   public function checkoutStore(Request $request)
@@ -139,7 +139,7 @@ class LamanController extends Controller
   {
     $riwayats = Riwayat::get();
     $transaksis = Transaksi::get();
-    return view('riwayat', ['riwayats' => $riwayats, 'transaksis' => $transaksis]);
+    return view('div-danus.riwayat', ['riwayats' => $riwayats, 'transaksis' => $transaksis]);
   }
 
   public function petunjuk()

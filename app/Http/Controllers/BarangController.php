@@ -19,7 +19,7 @@ class BarangController extends Controller
   {
     $barangs = Barang::get();
     $format_impor = Crypt::encryptString('assets/docs/format_impor.xlsx');
-    return view('barang', ['barangs' => $barangs, 'format_impor' => $format_impor]);
+    return view('div-danus.barang', ['barangs' => $barangs, 'format_impor' => $format_impor]);
   }
 
   public function barangStore(Request $request)
@@ -73,6 +73,11 @@ class BarangController extends Controller
   }
 
   public function barangDestroy(Request $request, Barang $barang)
+  {
+    //
+  }
+
+  public function barangImpor()
   {
     //
   }

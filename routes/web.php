@@ -33,6 +33,7 @@ Route::middleware(['login'])->group(function () {
     Route::post('/', [BarangController::class, 'barangStore'])->name('barang.store');
     Route::patch('/{barang}', [BarangController::class, 'barangUpdate'])->name('barang.update');
     Route::delete('/{barang}', [BarangController::class, 'barangDestroy'])->name('barang.destroy');
+    Route::post('/impor', [BarangController::class, 'barangImpor'])->name('barang.impor');
   });
 
   Route::prefix('/pengguna')->group(function () {
