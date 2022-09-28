@@ -7,7 +7,7 @@
     <div id="sidebar-menu">
       <!-- Left Menu Start -->
       <ul class="metismenu list-unstyled" id="side-menu">
-        <li class="menu-title">Menu</li>
+        <li class="menu-title">Divisi</li>
 
         {{-- <li>
           <a href="{{ route('beranda') }}">
@@ -36,6 +36,36 @@
             </ul>
           </li>
 
+          <li>
+            <a href="javascript: void(0);" class="has-arrow">
+              <i data-feather="monitor"></i>
+              <span>Front Office</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="#">Coming soon</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript: void(0);" class="has-arrow">
+              <i data-feather="book"></i>
+              <span>Litbang</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="#">Coming soon</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript: void(0);" class="has-arrow">
+              <i data-feather="tool"></i>
+              <span>Teknisi</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="#">Coming soon</a></li>
+            </ul>
+          </li>
+
           {{-- <li>
             <a href="{{ route('riwayat') }}">
               <i data-feather="archive"></i>
@@ -51,6 +81,8 @@
             </li>
           @endif --}}
 
+          <li class="menu-title">Pengguna</li>
+
           <li>
             <a href="javascript: void(0);" class="has-arrow">
               <i data-feather="user-check"></i>
@@ -65,7 +97,7 @@
             </ul>
           </li>
 
-          <li class="menu-title">Lainnya</li>
+          <li class="menu-title">Bantuan</li>
 
           <li>
             <a href="{{ route('petunjuk') }}">
@@ -87,6 +119,12 @@
             </a>
           </li>
         @endauth
+
+        {{-- <div class="card mx-4 mb-0 mt-5 bg-transparent shadow-none">
+          <div class="card-body">
+            <div class="text-muted">Released v0.8</div>
+          </div>
+        </div> --}}
 
       </ul>
 
